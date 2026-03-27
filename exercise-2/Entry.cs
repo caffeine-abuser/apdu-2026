@@ -1,14 +1,12 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-using System.Runtime.CompilerServices;
-
 Console.WriteLine("Hello, World!");
 
-// deserialize data from DB
-var database = new DataSource("Data Source=hardware-rental.sqlite");
-var users = DbInterop.loadUsers();
-var devices = DbInterop.loadDevices();
-var rentals = DbInterop.loadRentals();
+// """deserialize""" data from """DB"""
+var database = new DataSource();
+var users = database.Users;
+var devices = database.Devices;
+var rentals = database.Rentals;
 
 // check internal consistency; drop invalid elements
 
