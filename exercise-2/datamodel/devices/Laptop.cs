@@ -1,8 +1,15 @@
-class Laptop(string name, string serviceTag, DateOnly manufactureYear) : IBaseDevice
-{
-    public string Name { get; init; } = name;
-    public string ServiceTag { get; init; } = serviceTag;
-    public int ManufactureYear { get; init; } = manufactureYear.Year;
+using System.Runtime.InteropServices;
 
-    // laptop-specific fields; add CPU and available disk space later
+class Laptop(string name, string serviceTag, string cpu, int availableMemory, int availableDisk, OSPlatform os) : BaseDevice(name, serviceTag)
+{
+
+	public string CPU { get; set; } = cpu;
+	public int AvailableMemory { get; set; } = availableMemory;  // in gigabytes
+	public int AvailableDiskSpace { get; set; } = availableDisk; // likewise
+	public OSPlatform OS { get; set; } = os;
+
+	public override string ToString()
+	{
+		return $"a {Name} laptop (st: {ServiceTag}), spec: {CPU}/{AvailableMemory} GB RAM/{AvailableDiskSpace}GB disk space/{OS}";
+	}
 }

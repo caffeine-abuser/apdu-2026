@@ -1,10 +1,10 @@
-class Camera(string name, string serviceTag, DateOnly manufactureYear, string resolution, CameraType type) : IBaseDevice
+class Camera(string name, string serviceTag, int horResolution, int vertResolution) : BaseDevice(name, serviceTag)
 {
-    public string Name { get; init; } = name;
-    public string ServiceTag { get; init; } = serviceTag;
-    public int ManufactureYear { get; init; } = manufactureYear.Year;
+    public int HorizontalResolution { get; set; } = horResolution;
+    public int VerticalResolution { get; set; } = vertResolution;
 
-    // camera-specific fields; eg "480x240" for resolution
-    public string Resolution { get; init; } = resolution;
-    public CameraType Type = type;
+    public override string ToString()
+    {
+        return $"a {Name} camera (st: {ServiceTag}), {HorizontalResolution}x{VerticalResolution}, currently {Status}";
+    }
 }
